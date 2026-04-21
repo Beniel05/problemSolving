@@ -173,7 +173,15 @@ int main() {
     
     // 7;
     print_Pyramid(N);
-
+        for(int row = 0; row < N; row++) {
+            for(int space = 0; space < N - row - 1; space++) {
+                cout << ' ';
+            }
+            for(int print = 0; print < 2 * row + 1; print++) {
+                cout << '*';
+            }
+            cout << endl;
+        }
     }
 
     return 0;
