@@ -413,6 +413,147 @@ void print_Pyramid_Alphabet_Values_With_Symmetric(int N) {
     }
 }
 
+/* 18 => Right Triangle with reverse Alphabets
+
+E
+D E
+C D E
+B C D E
+A B C D E
+
+*/
+void print_Right_Triangle_With_Reverse_Aphabets(int N) {
+    for(int row = 0; row < N; row++) {
+        for(char ch = 'E' - row; ch <= 'E'; ch++) {
+            cout << ch << ' ';
+        }
+        cout << endl;
+    }
+}
+
+/* 19 => Symmetrical Diamond Star Pattern
+
+**********
+****  ****
+***    ***
+**      **
+*        *
+*        *
+**      **
+***    ***
+****  ****
+**********
+
+*/
+void print_Symmetrical_Diamond_Star_Pattern(int N) {
+    // Upper Half
+    int initialSpace = 0;
+    for(int row = 0; row < N; row++) {
+        for(int j = 0; j < N - row; j++) cout << "*";
+        for(int j = 0; j < initialSpace; j++) cout << " ";
+        for(int j = 0; j < N - row; j++) cout << "*";
+    
+        initialSpace += 2;
+        cout << endl;
+    }
+
+    // Lower Half
+    initialSpace = 2 * N - 2; // Reset space for the bottom
+    for(int row = 1; row <= N; row++) {
+        for(int j = 0; j < row; j++) cout << "*";
+        for(int j = 0; j < initialSpace; j++) cout << " ";
+        for(int j = 0; j < row; j++) cout << "*";
+    
+        initialSpace -= 2;
+        cout << endl;
+    }
+}
+
+/* 20 => Butterfly Symmetrical Star Pattern
+
+*        *
+**      **
+***    ***
+****  ****
+**********
+****  ****
+***    ***
+**      **
+*        *
+
+*/
+void print_Butterfly_Symmetrical_Star_Pattern(int N) {
+    int spaces = N * 2 - 2; // 8 (if N = 5)
+    
+    for(int row = 1; row <= N * 2 - 1; row++) {
+
+        int stars = row;
+
+        for(int j = 1; j <= stars; j++) {
+            if(row > N) stars = 2 * N - row;
+            cout << '*';
+        }
+
+        for(int j = 0; j < spaces; j++) {
+            cout << ' ';
+        }
+
+        for(int j = 1; j <= stars; j++) {
+            if(row > N) stars = 2 * N - row;
+            cout << '*';
+        }
+
+        if(row < N) spaces -= 2;
+        else spaces += 2;
+
+        cout << endl;
+    }
+}
+
+/* 21 => Hallow Square Star Pattern
+
+*****
+*   *
+*   *
+*   *
+*****
+
+*/
+void print_Hallow_Square_Star_Pattern(int N) {
+    for(int i = 0; i < N; i++) {
+        for(int j = 0; j < N; j++) {
+            if(i == 0 || j == 0 || i == N - 1 || j == N - 1) cout << '*';
+            else cout << ' ';
+        }
+        cout << endl;
+    }
+}
+
+/* 22 => Square Pattern With Numbers
+
+555555555
+544444445
+543333345
+543222345
+543212345
+543222345
+543333345
+544444445
+555555555
+
+*/
+void print_Square_Pattern_With_Minimum_Distance_As_Numbers_Regarding_Index(int N) {
+    for(int i = 0; i < 2 * N - 1; i++) {
+        for(int j = 0; j < 2 * N - 1; j++) {
+            int top = i;
+            int left = j;
+            int right = (2*N - 2) - j;
+            int down = (2*N - 2) - i;
+            cout << (N - min(min(top, down), min(left, right)));
+        }
+        cout << endl;
+    }
+}
 
 // Main function;
 int main() {
@@ -477,6 +618,20 @@ int main() {
     // 17;
     // print_Pyramid_Alphabet_Values_With_Symmetric(N);
 
+    // 18;
+    // print_Right_Triangle_With_Reverse_Aphabets(N);
+
+    // 19;
+    // print_Symmetrical_Diamond_Star_Pattern(N);
+    
+    // 20;
+    // print_Butterfly_Symmetrical_Star_Pattern(N);
+
+    // 21;
+    // print_Hallow_Square_Star_Pattern(N);
+    
+    // 22;
+    // print_Square_Pattern_With_Minimum_Distance_As_Numbers_Regarding_Index(N);
 
     }
 
